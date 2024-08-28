@@ -1,19 +1,24 @@
 import Link from "next/link";
+import { Briefcase } from "lucide-react";
 
 export default function Header() {
   return (
-    <header>
-      <div className="container flex items-center justify-between py-4 px-6 mx-auto">
-        <Link href={"/"} className="font-bold text-xl">
+    <header className="py-4">
+      <div className="flex items-center justify-between mx-auto container">
+        <Link href={"/"} className="flex items-center font-bold text-xl">
+          <Briefcase className="mr-2 text-blue-600" size={24} />
           Job Board
         </Link>
 
-        <nav className="flex gap-4 *:py-2 *:px-4 *:rounded-md">
-          <Link className="bg-gray-200" href={"/login"}>
+        <nav className="flex gap-4">
+          <Link className="bg-gray-200 py-2 px-4 rounded-md" href={"/login"}>
             Login
           </Link>
-          <Link className="bg-blue-600 text-white" href={"/new-listing"}>
-            Post a job
+          <Link
+            className="bg-blue-600 text-white py-2 px-4 rounded-md"
+            href={"/new-listing"}
+          >
+            Post a Job
           </Link>
         </nav>
       </div>
