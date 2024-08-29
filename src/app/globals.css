@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-
-body {
-  font-family: "Poppins", sans-serif;
+.bg-grid {
+  background-color: #f8f8f8; /* Base color */
+  background-image: linear-gradient(to right, #e0e0e0 1px, transparent 1px),
+    linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+  background-size: 20px 20px; /* Size of the grid cells */
+  position: relative;
+  padding: 40px; /* Adjust padding to your needs */
 }

@@ -2,12 +2,12 @@ import { Search, Briefcase } from "lucide-react";
 
 export default async function Hero() {
   return (
-    <section className="container my-16">
+    <section className="container my-16 p-8 bg-grid rounded-lg shadow-lg">
       <div className="flex justify-center">
-        <Briefcase className="text-blue-600 mb-4" size={48} />
+        <Briefcase className="text-red-600 mb-4" size={48} />
       </div>
       <h1 className="text-4xl font-bold text-center">
-        Find Your Next
+        Find <span className="text-red-500">Your</span> Next
         <br />
         Dream Job
       </h1>
@@ -25,7 +25,7 @@ export default async function Hero() {
           />
           <Search className="absolute left-3 top-2.5 text-gray-500" size={20} />
         </div>
-        <button className="bg-blue-600 text-white py-2 px-4 rounded-md">
+        <button className="bg-black text-white py-2 px-4 rounded-md">
           Search
         </button>
       </form>
