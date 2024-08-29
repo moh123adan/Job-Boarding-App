@@ -1,8 +1,16 @@
+import { Heart } from "lucide-react";
+
 export default function JobRow() {
   return (
     <>
-      <div className="bg-white p-4 rounded-lg shadow-sm">
-        <div className=" flex grow gap-4">
+      <div className="bg-white p-4 rounded-lg shadow-sm relative">
+        <div className="absolute top-2 right-4">
+          <div className="rounded-full p-1 bg-white flex items-center justify-center">
+            <Heart size={20} className="text-red-600" />
+          </div>
+        </div>
+
+        <div className=" flex grow gap-4 ">
           <div className="content-center">
             <img
               className="size-12"
