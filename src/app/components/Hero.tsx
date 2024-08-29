@@ -12,9 +12,8 @@ export default async function Hero() {
         Dream Job
       </h1>
       <p className="text-center text-gray-600 mt-2">
-        Discover top job opportunities across various industries. Whether you're
-        starting your career or looking for a new challenge, we're here to help
-        you find the perfect role.
+        Discover top job opportunities  across various industries. Whether <br /> you're
+        starting your career or looking for a new challenge
       </p>
       <form className="flex gap-2 mt-4 max-w-md mx-auto">
         <div className="relative w-full">
