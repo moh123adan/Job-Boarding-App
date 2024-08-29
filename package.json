@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^14.2.7",
+    "@workos-inc/authkit-nextjs": "^0.9.0",
     "@workos-inc/node": "^7.25.1",
     "lucide-react": "^0.436.0",
     "next": "14.2.7",

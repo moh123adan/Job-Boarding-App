@@ -11,6 +11,9 @@ importers:
       '@next/font':
         specifier: ^14.2.7
         version: 14.2.7(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      '@workos-inc/authkit-nextjs':
+        specifier: ^0.9.0
+        version: 0.9.0(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@workos-inc/node':
         specifier: ^7.25.1
         version: 7.25.1(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -322,6 +325,17 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
+  '@workos-inc/authkit-nextjs@0.9.0':
+    resolution: {integrity: sha512-qwE8+CK5aT0L3L83JZ9YVZ19spmIfrJyoK69dhikfHJiyMJ1Ef7WSIpuhwBd6VZRywXNmr16kOJPbFboeClShw==}
+    peerDependencies:
+      next: ^13.5.4 || ^14.0.3
+      react: ^18.0
+      react-dom: ^18.0
+
+  '@workos-inc/node@7.21.0':
+    resolution: {integrity: sha512-f3HsMEajeY81LU9YMsbWAO/GYPfTlgtaN0GtwmQj9Dp0T2jB+AFx8I/QxP6Aaxrr1yko0kXb1Q4gef8ziP/BEQ==}
+    engines: {node: '>=16'}
+
   '@workos-inc/node@7.25.1':
     resolution: {integrity: sha512-e1zzsJIg0Doxhoe8swBJBNeTgh0ytrzcvX185DkrISlevEn8FVMM7InoT1vO0OBbXrCSyX+bRDEKB7JFL1sVHg==}
     engines: {node: '>=16'}
@@ -494,6 +508,10 @@ packages:
 
   cookie@0.5.0:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+    engines: {node: '>= 0.6'}
+
+  cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
 
   cross-spawn@7.0.3:
@@ -911,8 +929,14 @@ packages:
       next:
         optional: true
 
+  iron-session@8.0.3:
+    resolution: {integrity: sha512-WtDX0griBliMoR6hGoU3SlefW+VSbfHrIVqURQ0Nbg/Pd+nj7VDsKV+sx0FHjyUCaO02YoYV5v+kW0PqvFJISQ==}
+
   iron-webcrypto@0.2.8:
     resolution: {integrity: sha512-YPdCvjFMOBjXaYuDj5tiHst5CEk6Xw84Jo8Y2+jzhMceclAnb3+vNPP/CTtb5fO2ZEuXEaO4N+w62Vfko757KA==}
+
+  iron-webcrypto@1.2.1:
+    resolution: {integrity: sha512-feOM6FaSr6rEABp/eDfVseKyTMDt+KGpeB35SkVn9Tyn0CqvVsY3EwI0v5i8nMHyJnzCIQf7nsy3p41TPkJZhg==}
 
   is-arguments@1.1.1:
     resolution: {integrity: sha512-8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==}
@@ -1267,6 +1291,9 @@ packages:
     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
     engines: {node: '>=16 || 14 >=14.18'}
 
+  path-to-regexp@6.2.2:
+    resolution: {integrity: sha512-GQX3SSMokngb36+whdpRXE+3f9V8UzyAorlYvOGx87ufGHehNTn5lCxrKtLyZ4Yl/wEKnNnr98ZzOwwDZV5ogw==}
+
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
@@ -1615,6 +1642,9 @@ packages:
   unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
 
+  uncrypto@0.1.3:
+    resolution: {integrity: sha512-Ql87qFHB3s/De2ClA9e0gsnS6zXG27SkTiSJwjCc9MebbfapQfuPzumMIUMi38ezPZVNFcHI9sUIepeQfw8J8Q==}
+
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
@@ -1954,6 +1984,29 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
+  '@workos-inc/authkit-nextjs@0.9.0(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@workos-inc/node': 7.21.0(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      iron-session: 8.0.3
+      jose: 5.6.3
+      next: 14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      path-to-regexp: 6.2.2
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    transitivePeerDependencies:
+      - express
+      - koa
+
+  '@workos-inc/node@7.21.0(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+    dependencies:
+      iron-session: 6.3.1(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      jose: 5.6.3
+      pluralize: 8.0.0
+    transitivePeerDependencies:
+      - express
+      - koa
+      - next
+
   '@workos-inc/node@7.25.1(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     dependencies:
       iron-session: 6.3.1(next@14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -2159,6 +2212,8 @@ snapshots:
   concat-map@0.0.1: {}
 
   cookie@0.5.0: {}
+
+  cookie@0.6.0: {}
 
   cross-spawn@7.0.3:
     dependencies:
@@ -2762,9 +2817,17 @@ snapshots:
     optionalDependencies:
       next: 14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
+  iron-session@8.0.3:
+    dependencies:
+      cookie: 0.6.0
+      iron-webcrypto: 1.2.1
+      uncrypto: 0.1.3
+
   iron-webcrypto@0.2.8:
     dependencies:
       buffer: 6.0.3
+
+  iron-webcrypto@1.2.1: {}
 
   is-arguments@1.1.1:
     dependencies:
@@ -3109,6 +3172,8 @@ snapshots:
     dependencies:
       lru-cache: 10.4.3
       minipass: 7.1.2
+
+  path-to-regexp@6.2.2: {}
 
   path-type@4.0.0: {}
 
@@ -3503,6 +3568,8 @@ snapshots:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
+
+  uncrypto@0.1.3: {}
 
   undici-types@6.19.8: {}
 
