@@ -12,11 +12,6 @@
 }
 
 
-body {
-  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", helvetica,
-  sans-serif;
-}
-
 .front-element {
   position: relative; /* or absolute */
   z-index: 10; /* Higher value to be in front */
