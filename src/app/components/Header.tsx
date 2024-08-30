@@ -1,25 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import {
-  Briefcase,
-  LogIn,
-  FilePlus,
-  Home,
-  Info,
-  Mail,
-  Menu,
-  X,
-} from "lucide-react";
-import { getSignInUrl, getUser } from "@workos-inc/authkit-nextjs";
+import { Briefcase, LogIn, FilePlus, Menu, X } from "lucide-react";
+import { fetchSignInUrl, fetchUser } from "../auth/authUtils";
 
-export default async function Header() {
-  const { user } = await getUser();
+interface User {
+  id: string;
+  email: string;
+  [key: string]: any;
+}
 
-  const signInUrl = await getSignInUrl();
+export default function Header() {
+  const [user, setUser] = useState<User | null>(null);
+  const [signInUrl, setSignInUrl] = useState<string>("");
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  useEffect(() => {
+    async function fetchData() {
+      const fetchedUser = await fetchUser();
+      const fetchedSignInUrl = await fetchSignInUrl();
+      setUser(fetchedUser);
+      setSignInUrl(fetchedSignInUrl);
+    }
+    fetchData();
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
