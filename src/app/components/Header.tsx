@@ -12,8 +12,13 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { getSignInUrl, getUser } from "@workos-inc/authkit-nextjs";
 
-export default function Header() {
+export default async function Header() {
+  const { user } = await getUser();
+
+  const signInUrl = await getSignInUrl();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -64,7 +69,7 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-4">
           <Link
             className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2"
-            href="/login"
+            href={signInUrl}
           >
             <LogIn size={20} />
             Login
@@ -114,14 +119,17 @@ export default function Header() {
         >
           Contact
         </Link>
-        <Link
-          className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2 mt-4"
-          href="/login"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          <LogIn size={20} />
-          Login
-        </Link>
+        {!user && (
+          <Link
+            className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2 mt-4"
+            href="/login"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <LogIn size={20} />
+            Login
+          </Link>
+        )}
+
         <Link
           className="bg-black text-white py-2 px-6 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-pink-500 hover:bg-black hover:text-white hover:shadow-[0_0_15px_3px_rgba(255,0,255,0.5)] flex items-center gap-2 mt-4"
           href="/new-listing"
