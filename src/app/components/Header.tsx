@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Briefcase, LogIn, FilePlus, Menu, X } from "lucide-react";
-import { fetchSignInUrl, fetchUser } from "../auth/authUtils";
+import { fetchSignInUrl, fetchUser, fetchSignUpUrl } from "../auth/authUtils";
 
 interface User {
   id: string;
@@ -32,6 +32,7 @@ export default function Header() {
 
   return (
     <header className="py-4 fixed top-0 left-0 w-full bg-white z-50">
+      {JSON.stringify(user)}
       <div className="px-6 md:px-44 flex items-center justify-between mx-auto my-4">
         {/* Logo (Always Visible) */}
         <div className="flex items-center">
@@ -88,7 +89,6 @@ export default function Header() {
           </Link>
         </div>
       </div>
-
       {/* Mobile Menu (Visible only when toggled) */}
       <nav
         className={`${
