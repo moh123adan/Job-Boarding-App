@@ -1,4 +1,3 @@
-
 "use server";
 
 import { getSignInUrl, getUser, getSignUpUrl } from "@workos-inc/authkit-nextjs";
@@ -9,7 +8,8 @@ export async function fetchUser() {
 }
 
 export async function fetchSignUpUrl() {
-    const signOutUrl = await getSignUpUrl();
+    const signUpUrl = await getSignUpUrl();
+    return signUpUrl;
 }
 
 export async function fetchSignInUrl() {
