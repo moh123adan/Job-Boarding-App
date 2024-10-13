@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Jobs from "./components/Jobs";
 import CategoriesGrid from "./components/CategoriesGrid";
 import UploadCv from "./components/UploadCv";
+import HowItWorks from "./components/HowItWorks";
 import {
   getSignInUrl,
   getSignUpUrl,
@@ -25,6 +26,7 @@ export default async function Home() {
       <UploadCv />
 
       <Jobs />
+      <HowItWorks />
       {/* <About />
       <Contact /> */}
     </>
