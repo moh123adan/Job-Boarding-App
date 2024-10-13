@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Hero from "./components/Hero";
 import Jobs from "./components/Jobs";
+import CategoriesGrid from "./components/CategoriesGrid";
+import UploadCv from "./components/UploadCv";
 import {
   getSignInUrl,
   getSignUpUrl,
@@ -19,6 +21,9 @@ export default async function Home() {
   return (
     <>
       <Hero />
+      <CategoriesGrid />
+      <UploadCv />
+
       <Jobs />
       {/* <About />
       <Contact /> */}

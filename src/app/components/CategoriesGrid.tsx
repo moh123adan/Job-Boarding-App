@@ -25,7 +25,7 @@ export default function CategoriesGrid() {
   return (
     <section className="py-12 bg-white">
       <h2 className="text-center text-3xl font-semibold text-primaryBlack mb-8">
-        Browse Top Categories
+        Browse <span className="text-red-500">Top Cat</span>egories
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-auto max-w-6xl">
         {categories.map((category, index) => (
@@ -42,6 +42,19 @@ export default function CategoriesGrid() {
             <span className="text-primaryRed mt-2">({category.count})</span>
           </div>
         ))}
+      </div>
+      {/* Browse All Sectors Button */}
+      <div className="flex justify-center mt-10">
+        <button
+          className="
+              bg-black text-white py-2 px-6 rounded
+              border-2 border-transparent transition-all duration-300 ease-in-out 
+              hover:border-pink-500 hover:bg-black hover:text-white 
+              hover:shadow-[0_0_15px_3px_rgba(255,0,255,0.5)] 
+              flex items-center gap-2"
+        >
+          BROWSE ALL SECTORS
+        </button>
       </div>
     </section>
   );
