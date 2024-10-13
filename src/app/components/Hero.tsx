@@ -6,14 +6,15 @@ export default async function Hero() {
       <div className="flex justify-center">
         <Briefcase className="text-red-600 mb-4" size={48} />
       </div>
-      <h1 className="text-6xl font-bold text-center">
-        Find <span className="text-red-500">Your</span> Next
+      <h1 className="text-5xl font-semibold text-center leading-tight">
+        Discover <span className="text-red-500">Your Next</span> 
         <br />
-        Dream Job
+        Career Opportunity
       </h1>
+
       <p className="text-center text-xl text-gray-600 mt-2">
-        Discover top job opportunities  across various industries. Whether <br /> you're
-        starting your career or looking for a new challenge
+        Discover top job opportunities across various industries. Whether <br />{" "}
+        you're starting your career or looking for a new challenge
       </p>
       <form className="flex gap-2 mt-4 max-w-md mx-auto">
         <div className="relative w-full">
