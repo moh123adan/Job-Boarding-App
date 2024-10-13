@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Briefcase, LogIn, FilePlus, Menu, X } from "lucide-react";
+import { Briefcase, LogIn, FilePlus, Menu, X, Search } from "lucide-react";
 import { fetchSignInUrl, fetchUser, fetchSignUpUrl } from "../auth/authUtils";
 
 export default function Header() {
@@ -18,8 +18,8 @@ export default function Header() {
         const fetchedSignInUrl = await fetchSignInUrl();
         const fetchedSignUpUrl = await fetchSignUpUrl();
 
-        console.log("Fetched User:", fetchedUser); // Check here
-        console.log("Fetched User firstName:", fetchedUser?.firstName); // Check if firstName is undefined
+        console.log("Fetched User:", fetchedUser);
+        console.log("Fetched User firstName:", fetchedUser?.firstName);
 
         setUser(fetchedUser);
         setSignInUrl(fetchedSignInUrl);
@@ -100,6 +100,15 @@ function NavLinks({ user, signInUrl, signUpUrl, onClick, isMobile }) {
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
+        href="/find-job"
+        onClick={onClick}
+      >
+        Find Job
+      </Link>
+      <Link
+        className={`${
+          isMobile ? "text-2xl mb-4" : "text-gray-700"
+        } transition-all duration-300 ease-in-out hover:text-black`}
         href="/about"
         onClick={onClick}
       >
@@ -118,7 +127,7 @@ function NavLinks({ user, signInUrl, signUpUrl, onClick, isMobile }) {
       {!user ? (
         <Link
           className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2 mt-4"
-          href={signInUrl || "#"} // Fallback added
+          href={signInUrl || "#"}
           onClick={onClick}
         >
           <LogIn size={20} />
@@ -127,7 +136,7 @@ function NavLinks({ user, signInUrl, signUpUrl, onClick, isMobile }) {
       ) : (
         <Link
           className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2 mt-4"
-          href={signUpUrl} // Fallback added
+          href={signUpUrl}
           onClick={onClick}
         >
           <LogIn size={20} />
