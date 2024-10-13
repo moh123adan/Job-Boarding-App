@@ -20,7 +20,7 @@ export default function UploadCv() {
         <div className="flex justify-center">
           <button
             className="
-                bg-black text-white py-2 px-6 rounded 
+                bg-black text-white py-2 px-6 rounded-full
                 border-2 border-transparent transition-all duration-300 ease-in-out 
                 hover:border-pink-500 hover:bg-black hover:text-white 
                 hover:shadow-[0_0_15px_3px_rgba(255,0,255,0.5)] 
