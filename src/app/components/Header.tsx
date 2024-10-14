@@ -1,38 +1,37 @@
-"use client";
+"use client"; // Enable client-side rendering
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Briefcase, LogIn, FilePlus, Menu, X, Search } from "lucide-react";
-import { fetchSignInUrl, fetchUser, fetchSignUpUrl } from "../auth/authUtils";
+import { Briefcase, LogIn, FilePlus, Menu, X } from "lucide-react";
+import { getSignInUrl, getUser, signOut } from "@workos-inc/authkit-nextjs";
 
 export default function Header() {
-  const [user, setUser] = useState(null);
-  const [signInUrl, setSignInUrl] = useState("");
-  const [signUpUrl, setSignUpUrl] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState(null); // Store the user data
+  const [signInUrl, setSignInUrl] = useState(""); // Store the login URL
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Toggle mobile menu
 
+  // Fetch user info and login URL when the component mounts
   useEffect(() => {
     async function fetchData() {
       try {
-        const fetchedUser = await fetchUser();
-        const fetchedSignInUrl = await fetchSignInUrl();
-        const fetchedSignUpUrl = await fetchSignUpUrl();
-
-        console.log("Fetched User:", fetchedUser);
-        console.log("Fetched User firstName:", fetchedUser?.firstName);
-
+        const fetchedUser = await getUser(); // Get the logged-in user (if any)
+        const fetchedSignInUrl = await getSignInUrl(); // Get the login URL
         setUser(fetchedUser);
         setSignInUrl(fetchedSignInUrl);
-        setSignUpUrl(fetchedSignUpUrl);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching user data:", error);
       }
     }
     fetchData();
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  // Toggle the mobile menu
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  // Handle logout functionality
+  const handleLogout = async () => {
+    await signOut(); // Log the user out
+    setUser(null); // Clear the user from state
   };
 
   return (
@@ -46,16 +45,16 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Menu Icon for Small Screens */}
+        {/* Mobile Menu Icon */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} aria-label="Toggle Menu">
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Desktop Links */}
+        {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
-          <NavLinks user={user} signInUrl={signInUrl} signUpUrl={signUpUrl} />
+          <NavLinks user={user} signInUrl={signInUrl} onLogout={handleLogout} />
         </div>
       </div>
 
@@ -75,78 +74,81 @@ export default function Header() {
         <NavLinks
           user={user}
           signInUrl={signInUrl}
-          signUpUrl={signUpUrl}
-          onClick={() => setIsMenuOpen(false)}
+          onLogout={handleLogout}
           isMobile
+          onClick={() => setIsMenuOpen(false)}
         />
       </nav>
     </header>
   );
 }
 
-function NavLinks({ user, signInUrl, signUpUrl, onClick, isMobile }) {
+// Navigation Links Component
+function NavLinks({ user, signInUrl, onLogout, isMobile, onClick }) {
   return (
     <>
+      {/* Navigation Links */}
       <Link
+        href="/"
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
-        href="/"
         onClick={onClick}
       >
         Home
       </Link>
       <Link
+        href="/find-job"
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
-        href="/find-job"
         onClick={onClick}
       >
         Find Job
       </Link>
       <Link
+        href="/about"
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
-        href="/about"
         onClick={onClick}
       >
         About
       </Link>
       <Link
+        href="/contact"
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
-        href="/contact"
         onClick={onClick}
       >
         Contact
       </Link>
 
+      {/* Login/Logout Logic */}
       {!user ? (
         <Link
-          className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2 mt-4"
-          href={signInUrl || "#"}
+          href={signInUrl}
+          className="bg-gray-200 py-2 px-4 rounded-full transition-all duration-300 hover:bg-gray-300"
           onClick={onClick}
         >
           <LogIn size={20} />
           Login
         </Link>
       ) : (
-        <Link
-          className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2 mt-4"
-          href={signUpUrl}
-          onClick={onClick}
+        <button
+          onClick={onLogout}
+          className="bg-gray-200 py-2 px-4 rounded-full transition-all duration-300 hover:bg-gray-300"
         >
           <LogIn size={20} />
-          Logout {user.firstName}
-        </Link>
+          Logout, {user.firstName}
+        </button>
       )}
 
+      {/* Post a Job Button */}
       <Link
-        className="bg-black text-white py-2 px-6 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-pink-500 hover:bg-black hover:text-white hover:shadow-[0_0_15px_3px_rgba(255,0,255,0.5)] flex items-center gap-2 mt-4"
         href="/new-listing"
+        className="bg-black text-white py-2 px-6 rounded-full transition-all duration-300 hover:bg-gray-800"
         onClick={onClick}
       >
         <FilePlus size={20} />
