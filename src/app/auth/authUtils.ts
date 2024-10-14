@@ -16,3 +16,5 @@ export async function fetchSignInUrl() {
     const signInUrl = await getSignInUrl();
     return signInUrl;
 }
+
+console.log("SignInUrl")
