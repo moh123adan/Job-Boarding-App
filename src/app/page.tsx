@@ -12,6 +12,7 @@ import {
 } from "@workos-inc/authkit-nextjs";
 
 
+
 export default async function Home() {
   const { user } = await getUser();
 
@@ -29,6 +30,7 @@ export default async function Home() {
 
       <Jobs />
       <HowItWorks />
+
       {/* <About />
       <Contact /> */}
     </>

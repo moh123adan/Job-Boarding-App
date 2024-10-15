@@ -6,7 +6,7 @@ import { LogIn, FilePlus, Menu, X } from 'lucide-react';
 import { logoutAction } from '../actions/authActions'; // Import server action
 
 interface NavLinksProps {
-  user: any; // Adjust type according to your user object structure
+  user: any;
   signInUrl: string;
 }
 
@@ -14,9 +14,9 @@ export default function NavLinks({ user, signInUrl }: NavLinksProps) {
   const [isPending, startTransition] = useTransition();
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Track menu state
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen); // Toggle mobile menu
+  // Toggle the menu state
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  // Handle logout with server action
   const handleLogout = () => {
     startTransition(async () => {
       await logoutAction();
@@ -26,41 +26,21 @@ export default function NavLinks({ user, signInUrl }: NavLinksProps) {
 
   return (
     <div className="relative">
-      {/* Desktop Navigation Links */}
-      <div className="hidden md:flex items-center gap-6">
-        <DesktopLinks
-          user={user}
-          signInUrl={signInUrl}
-          handleLogout={handleLogout}
-          isPending={isPending}
-        />
-      </div>
-
-      {/* Mobile Menu Icon */}
-      <div className="md:hidden">
+      {/* Mobile Menu Icon - Show Menu or Close Button */}
+      <div className="md:hidden z-50">
         <button
           onClick={toggleMenu}
-          aria-label="Toggle Menu"
-          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
           className="focus:outline-none"
         >
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Navigation Links */}
-      {/* Overlay */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
-          onClick={toggleMenu}
-        ></div>
-      )}
-
+      {/* Mobile Navigation Menu */}
       <nav
-        className={`fixed top-0 left-0 w-full h-full bg-white z-50 flex flex-col items-center justify-center
-          transform transition-transform duration-300
-          ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-6 transition-transform duration-300
+          ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <MobileLinks
           user={user}
@@ -70,6 +50,16 @@ export default function NavLinks({ user, signInUrl }: NavLinksProps) {
           toggleMenu={toggleMenu}
         />
       </nav>
+
+      {/* Desktop Navigation Links */}
+      <div className="hidden md:flex items-center gap-6">
+        <DesktopLinks
+          user={user}
+          signInUrl={signInUrl}
+          handleLogout={handleLogout}
+          isPending={isPending}
+        />
+      </div>
     </div>
   );
 }
@@ -87,27 +77,21 @@ function DesktopLinks({
 }) {
   return (
     <>
-      <Link
-        href="/"
-        className="text-gray-700 hover:text-black transition font-medium"
-      >
+      <Link href="/" className="text-gray-700 hover:text-black font-medium">
         Home
       </Link>
       <Link
         href="/find-job"
-        className="text-gray-700 hover:text-black transition font-medium"
+        className="text-gray-700 hover:text-black font-medium"
       >
         Find Job
       </Link>
-      <Link
-        href="/about"
-        className="text-gray-700 hover:text-black transition font-medium"
-      >
+      <Link href="/about" className="text-gray-700 hover:text-black font-medium">
         About
       </Link>
       <Link
         href="/contact"
-        className="text-gray-700 hover:text-black transition font-medium"
+        className="text-gray-700 hover:text-black font-medium"
       >
         Contact
       </Link>
@@ -119,7 +103,7 @@ function DesktopLinks({
           </span>
           <button
             onClick={handleLogout}
-            className={`bg-gray-200 px-4 py-2 rounded-full transition hover:bg-gray-300 hover:shadow-md
+            className={`bg-gray-200 px-4 py-2 rounded-full transition hover:bg-gray-300 hover:shadow-md 
               ${isPending ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={isPending}
           >
@@ -129,8 +113,7 @@ function DesktopLinks({
       ) : (
         <Link
           href={signInUrl}
-          className="flex items-center gap-2 bg-gray-200 px-4 py-2 rounded-full transition 
-            hover:bg-gray-300 hover:shadow-md"
+          className="flex items-center gap-2 bg-gray-200 px-4 py-2 rounded-full transition hover:bg-gray-300 hover:shadow-md"
         >
           <LogIn size={20} /> Login
         </Link>
@@ -163,28 +146,28 @@ function MobileLinks({
     <>
       <Link
         href="/"
-        className="text-gray-700 hover:text-black transition font-medium text-2xl mb-4"
+        className="text-gray-700 hover:text-black font-medium text-2xl mb-4"
         onClick={toggleMenu}
       >
         Home
       </Link>
       <Link
         href="/find-job"
-        className="text-gray-700 hover:text-black transition font-medium text-2xl mb-4"
+        className="text-gray-700 hover:text-black font-medium text-2xl mb-4"
         onClick={toggleMenu}
       >
         Find Job
       </Link>
       <Link
         href="/about"
-        className="text-gray-700 hover:text-black transition font-medium text-2xl mb-4"
+        className="text-gray-700 hover:text-black font-medium text-2xl mb-4"
         onClick={toggleMenu}
       >
         About
       </Link>
       <Link
         href="/contact"
-        className="text-gray-700 hover:text-black transition font-medium text-2xl mb-4"
+        className="text-gray-700 hover:text-black font-medium text-2xl mb-4"
         onClick={toggleMenu}
       >
         Contact
@@ -197,7 +180,7 @@ function MobileLinks({
           </span>
           <button
             onClick={handleLogout}
-            className={`bg-gray-200 px-4 py-2 rounded-full transition hover:bg-gray-300
+            className={`bg-gray-200 px-4 py-2 rounded-full transition hover:bg-gray-300 
               ${isPending ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={isPending}
           >
@@ -207,8 +190,7 @@ function MobileLinks({
       ) : (
         <Link
           href={signInUrl}
-          className="flex items-center gap-2 bg-gray-200 px-4 py-2 rounded-full transition 
-            hover:bg-gray-300"
+          className="flex items-center gap-2 bg-gray-200 px-4 py-2 rounded-full transition hover:bg-gray-300"
           onClick={toggleMenu}
         >
           <LogIn size={20} /> Login
@@ -217,8 +199,7 @@ function MobileLinks({
 
       <Link
         href="/new-listing"
-        className="flex items-center gap-2 bg-black text-white px-6 py-2 rounded-full transition 
-          hover:bg-gray-800"
+        className="flex items-center gap-2 bg-black text-white px-6 py-2 rounded-full transition hover:bg-gray-800"
         onClick={toggleMenu}
       >
         <FilePlus size={20} /> Post a Job
