@@ -11,6 +11,7 @@ import {
   signOut,
 } from "@workos-inc/authkit-nextjs";
 
+
 export default async function Home() {
   const { user } = await getUser();
 
@@ -22,6 +23,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
+
       <CategoriesGrid />
       <UploadCv />
 

@@ -1,9 +1,9 @@
-// /app/actions/authActions.js (or .ts if using TypeScript)
-"use server"; // This marks the file as a server action
+// /app/actions/authActions.ts
+"use server";
 
 import { signOut } from "@workos-inc/authkit-nextjs";
 
-// Define the logout action
+// Define a server action for logout
 export async function logoutAction() {
-    await signOut();
+    await signOut(); // Perform logout logic
 }
