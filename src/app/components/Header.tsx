@@ -1,6 +1,8 @@
-import { getSignInUrl, getUser, signOut } from "@workos-inc/authkit-nextjs";
+// Header.tsx (Server Component)
+
+import { getSignInUrl, getUser } from "@workos-inc/authkit-nextjs";
+import NavLinks from "./NavLinks"; // Client Component
 import Link from "next/link";
-import NavLinks from "./NavLinks";
 
 export default async function Header() {
   const { user } = await getUser();
@@ -16,9 +18,10 @@ export default async function Header() {
           </Link>
         </div>
 
-        {/* Desktop Links */}
+        {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
-          <NavLinks user={user} signInUrl={signInUrl} signUpUrl="" />
+          {/* Pass user data and signInUrl as props */}
+          <NavLinks user={user} signInUrl={signInUrl} />
         </div>
       </div>
     </header>
