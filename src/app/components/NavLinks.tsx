@@ -22,33 +22,43 @@ export default function NavLinks({ user, signInUrl }: NavLinksProps) {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <Link href="/" className="text-gray-700 hover:text-black transition">
+    <div className="flex items-center gap-6">
+      <Link
+        href="/"
+        className="text-gray-700 hover:text-black transition font-medium"
+      >
         Home
       </Link>
       <Link
         href="/find-job"
-        className="text-gray-700 hover:text-black transition"
+        className="text-gray-700 hover:text-black transition font-medium"
       >
         Find Job
       </Link>
-      <Link href="/about" className="text-gray-700 hover:text-black transition">
+      <Link
+        href="/about"
+        className="text-gray-700 hover:text-black transition font-medium"
+      >
         About
       </Link>
       <Link
         href="/contact"
-        className="text-gray-700 hover:text-black transition"
+        className="text-gray-700 hover:text-black transition font-medium"
       >
         Contact
       </Link>
 
       {/* Display User Info or Login Button */}
       {user ? (
-        <div className="flex items-center gap-2">
-          <span>Hello, {user.firstName}</span>
+        <div className="flex items-center gap-3">
+          <span className="text-red-500 text-2xl font-semibold">
+            {user.firstName}
+          </span>
           <button
             onClick={handleLogout}
-            className="bg-gray-200 px-4 py-2 rounded-full transition hover:bg-gray-300"
+            className={`bg-gray-200 px-4 py-2 rounded-full transition 
+              hover:bg-gray-300 hover:shadow-md hover:text-black
+              ${isPending ? "opacity-50 cursor-not-allowed" : ""}`}
             disabled={isPending}
           >
             {isPending ? "Logging out..." : "Logout"}
@@ -57,7 +67,8 @@ export default function NavLinks({ user, signInUrl }: NavLinksProps) {
       ) : (
         <Link
           href={signInUrl}
-          className="bg-gray-200 px-4 py-2 rounded-full transition hover:bg-gray-300"
+          className="flex items-center gap-2 bg-gray-200 px-4 py-2 rounded-full transition 
+            hover:bg-gray-300 hover:shadow-md hover:text-black"
         >
           <LogIn size={20} /> Login
         </Link>
@@ -65,7 +76,8 @@ export default function NavLinks({ user, signInUrl }: NavLinksProps) {
 
       <Link
         href="/new-listing"
-        className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800"
+        className="flex items-center gap-2 bg-black text-white px-6 py-2 rounded-full 
+          transition hover:bg-gray-800 hover:shadow-lg"
       >
         <FilePlus size={20} /> Post a Job
       </Link>
