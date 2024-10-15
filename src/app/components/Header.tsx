@@ -3,6 +3,7 @@
 import { getSignInUrl, getUser } from "@workos-inc/authkit-nextjs";
 import NavLinks from "./NavLinks"; // Client Component
 import Link from "next/link";
+import {Briefcase} from "lucide-react"
 
 export default async function Header() {
   const { user } = await getUser();
@@ -14,7 +15,8 @@ export default async function Header() {
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center font-bold text-xl">
-            <span className="mr-2 text-red-600">🔴</span> NextHire
+            <Briefcase size={32} className="mr-2 text-red-600" />
+            NextHire
           </Link>
         </div>
 
