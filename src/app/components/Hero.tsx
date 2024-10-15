@@ -1,4 +1,5 @@
 import { Search, Briefcase } from "lucide-react";
+import SparklesText from "@/components/ui/sparkles-text";
 
 export default async function Hero() {
   return (
@@ -7,8 +8,11 @@ export default async function Hero() {
         <Briefcase className="text-red-600 mb-4" size={48} />
       </div>
       <h1 className="text-5xl font-semibold text-center leading-tight">
-        Discover <span className="text-red-500">Your Next</span> 
-        <br />
+        Discover{" "}
+        <span className="text-red-500 text-2xl">
+          <SparklesText text="Your Next " />
+        </span>
+       
         Career Opportunity
       </h1>
 

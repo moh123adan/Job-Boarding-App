@@ -1,37 +1,38 @@
-"use client"; // Enable client-side rendering
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Briefcase, LogIn, FilePlus, Menu, X } from "lucide-react";
-import { getSignInUrl, getUser, signOut } from "@workos-inc/authkit-nextjs";
+import { Briefcase, LogIn, FilePlus, Menu, X, Search } from "lucide-react";
+import { fetchSignInUrl, fetchUser, fetchSignUpUrl } from "../auth/authUtils";
 
 export default function Header() {
-  const [user, setUser] = useState(null); // Store the user data
-  const [signInUrl, setSignInUrl] = useState(""); // Store the login URL
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Toggle mobile menu
+  const [user, setUser] = useState(null);
+  const [signInUrl, setSignInUrl] = useState("");
+  const [signUpUrl, setSignUpUrl] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Fetch user info and login URL when the component mounts
   useEffect(() => {
     async function fetchData() {
       try {
-        const fetchedUser = await getUser(); // Get the logged-in user (if any)
-        const fetchedSignInUrl = await getSignInUrl(); // Get the login URL
+        const fetchedUser = await fetchUser();
+        const fetchedSignInUrl = await fetchSignInUrl();
+        const fetchedSignUpUrl = await fetchSignUpUrl();
+
+        console.log("Fetched User:", fetchedUser);
+        console.log("Fetched User firstName:", fetchedUser?.firstName);
+
         setUser(fetchedUser);
         setSignInUrl(fetchedSignInUrl);
+        setSignUpUrl(fetchedSignUpUrl);
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching data:", error);
       }
     }
     fetchData();
   }, []);
 
-  // Toggle the mobile menu
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  // Handle logout functionality
-  const handleLogout = async () => {
-    await signOut(); // Log the user out
-    setUser(null); // Clear the user from state
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -45,16 +46,16 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobile Menu Icon */}
+        {/* Menu Icon for Small Screens */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} aria-label="Toggle Menu">
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <NavLinks user={user} signInUrl={signInUrl} onLogout={handleLogout} />
+          <NavLinks user={user} signInUrl={signInUrl} signUpUrl={signUpUrl} />
         </div>
       </div>
 
@@ -74,86 +75,83 @@ export default function Header() {
         <NavLinks
           user={user}
           signInUrl={signInUrl}
-          onLogout={handleLogout}
-          isMobile
+          signUpUrl={signUpUrl}
           onClick={() => setIsMenuOpen(false)}
+          isMobile
         />
       </nav>
     </header>
   );
 }
 
-// Navigation Links Component
-function NavLinks({ user, signInUrl, onLogout, isMobile, onClick }) {
+function NavLinks({ user, signInUrl, signUpUrl, onClick, isMobile }) {
   return (
     <>
-      {/* Navigation Links */}
       <Link
-        href="/"
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
+        href="/"
         onClick={onClick}
       >
         Home
       </Link>
       <Link
-        href="/find-job"
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
+        href="/find-job"
         onClick={onClick}
       >
         Find Job
       </Link>
       <Link
-        href="/about"
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
+        href="/about"
         onClick={onClick}
       >
         About
       </Link>
       <Link
-        href="/contact"
         className={`${
           isMobile ? "text-2xl mb-4" : "text-gray-700"
         } transition-all duration-300 ease-in-out hover:text-black`}
+        href="/contact"
         onClick={onClick}
       >
         Contact
       </Link>
 
-      {/* Login/Logout Logic */}
       {!user ? (
         <Link
-          href={signInUrl}
-          className="bg-gray-200 py-2 px-4 rounded-full transition-all duration-300 hover:bg-gray-300"
+          className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2 mt-4"
+          href={signInUrl || "#"}
           onClick={onClick}
         >
           <LogIn size={20} />
           Login
         </Link>
       ) : (
-        <button
-          onClick={onLogout}
-          className="bg-gray-200 py-2 px-4 rounded-full transition-all duration-300 hover:bg-gray-300"
+        <Link
+          className="bg-gray-200 py-2 px-4 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-gray-400 hover:bg-gray-200 hover:text-black hover:shadow-[0_0_15px_3px_rgba(128,128,128,0.5)] flex items-center gap-2 mt-4"
+          href={signUpUrl}
+          onClick={onClick}
         >
           <LogIn size={20} />
-          Logout, {user.firstName}
-        </button>
+          Logout {user.firstName}
+        </Link>
       )}
 
-      {/* Post a Job Button */}
       <Link
+        className="bg-black text-white py-2 px-6 rounded-full border-2 border-transparent transition-all duration-300 ease-in-out hover:border-pink-500 hover:bg-black hover:text-white hover:shadow-[0_0_15px_3px_rgba(255,0,255,0.5)] flex items-center gap-2 mt-4"
         href="/new-listing"
-        className="bg-black text-white py-2 px-6 rounded-full transition-all duration-300 hover:bg-gray-800"
         onClick={onClick}
       >
         <FilePlus size={20} />
         Post a Job
       </Link>
-    </>
-  );
+    </>
+  );
 }
