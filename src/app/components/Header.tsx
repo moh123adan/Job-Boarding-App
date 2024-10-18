@@ -10,7 +10,7 @@ export default async function Header() {
   const signInUrl = await getSignInUrl();
 
   return (
-    <header className="py-4 fixed top-0 left-0 w-full bg-white z-50">
+    <header className="py-4  top-0 left-0 w-full bg-white z-50">
       <div className="px-6 md:px-44 flex items-center justify-between mx-auto my-4">
         {/* Logo */}
         <div className="flex items-center">

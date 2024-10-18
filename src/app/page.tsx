@@ -10,8 +10,7 @@ import {
   getUser,
   signOut,
 } from "@workos-inc/authkit-nextjs";
-
-
+import { Toaster } from "react-hot-toast";
 
 export default async function Home() {
   const { user } = await getUser();
@@ -23,6 +22,7 @@ export default async function Home() {
   const signUpUrl = await getSignUpUrl();
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <Hero />
 
       <CategoriesGrid />

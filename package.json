@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "6.5.2",
+    "@fortawesome/free-brands-svg-icons": "6.5.2",
+    "@fortawesome/free-regular-svg-icons": "6.5.2",
+    "@fortawesome/free-solid-svg-icons": "6.5.2",
+    "@fortawesome/react-fontawesome": "0.2.1",
     "@workos-inc/authkit-nextjs": "^0.9.0",
     "@workos-inc/node": "^7.25.1",
     "class-variance-authority": "^0.7.0",
@@ -19,6 +24,7 @@
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
   },

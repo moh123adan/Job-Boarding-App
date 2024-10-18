@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
 .bg-grid {
   background-color: #f8f8f8; /* Base color */
   background-image: linear-gradient(to right, #e0e0e0 1px, transparent 1px),

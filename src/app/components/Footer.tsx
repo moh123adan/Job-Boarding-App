@@ -12,11 +12,11 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-400 py-12">
+    <footer className="bg-gray-100 text-gray-900 py-12">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* About Us */}
         <div>
-          <h3 className="text-lg font-semibold text-black mb-4">About Us</h3>
+          <h3 className="text-4xl font-semibold text-red-500 mb-4 ">About Us</h3>
           <p>
             Heaven fruitful doesn't cover lesser days. Appear creeping seasons
             so behold.
@@ -89,7 +89,7 @@ export default function Footer() {
       </div>
 
       {/* Statistics Section */}
-      <div className="container mx-auto flex justify-between items-center mt-8 text-gray-500">
+      <div className="container mx-auto flex justify-between items-center mt-8 text-gray-900">
         <div className="flex items-center gap-2">
           <Briefcase size={24} className="text-red-500" />
           <span className="text-black text-xl font-semibold">NextHire</span>
@@ -112,9 +112,8 @@ export default function Footer() {
 
       {/* Copyright and Social Links */}
       <div className="container mx-auto mt-8 text-center">
-        <p className="text-gray-700">
-          Copyright ©2024 All rights reserved | This template is made with{" "}
-          <span className="text-red-500">❤</span> by Colorlib
+        <p className="text-black">
+          Copyright ©2024 All rights reserved 
         </p>
         <div className="flex justify-center mt-4 space-x-4">
           <a href="#" aria-label="Facebook" className="hover:text-blue-600">

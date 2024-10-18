@@ -24,7 +24,10 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <VerticalBars />
-        <Footer />
+        {/* <Footer /> */}
+        <footer className="container py-8 mt-60 text-gray-500">
+          Job Board &copy; 2024 - All rights reserved
+        </footer>
       </body>
     </html>
   );

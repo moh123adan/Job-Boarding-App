@@ -33,7 +33,7 @@ export default function NavLinks({ user, signInUrl }: NavLinksProps) {
           aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
           className="focus:outline-none"
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {/* {isMenuOpen ? <X size={28} /> : <Menu size={28} />} */}
         </button>
       </div>
 
