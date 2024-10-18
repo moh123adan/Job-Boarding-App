@@ -2,6 +2,8 @@ import { getUser } from "@workos-inc/authkit-nextjs";
 // import { WorkOS } from "@workos-inc/node";
 // import Link from "next/link";
 // import toast from "react-hot-toast";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default async function NewListingPage() {
   // const workos = new WorkOS(process.env.WORKOS_API_KEY);
@@ -29,13 +31,22 @@ export default async function NewListingPage() {
 
   return (
     <div className="container mt-42">
-      {!user && (
-        <div>You need to be logged in to post</div>
+      {!user && <div>You need to be logged in to post</div>}
+      {user && (
+        <div>
+          <form action="">
+            <div>
+              <h2 className="text-lg">Create new company</h2>
+              <p className="text-gray-500">
+                To Create a job listing your first need to register company
+              </p>
+              <button className="bg-gray-200 px-4 py-2 rounded-md">
+                Create company <FontAwesomeIcon icon={faArrowRight} />
+              </button>
+            </div>
+          </form>
+        </div>
       )}
-      <div>
-        <h1>New listing </h1>
-        <div>{JSON.stringify(user)}</div>
-      </div>
     </div>
   );
 }
