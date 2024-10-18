@@ -10,7 +10,7 @@ export default function UploadCv() {
       <div className="absolute inset-0 bg-gray-100/70 shadow-sm"></div>{" "}
       {/* Gray overlay */}
       <div className="relative z-10 text-center">
-        <h4 classNameD="uppercase tracking-wider text-sm mb-4 text-black">
+        <h4 className="uppercase tracking-wider text-sm mb-4 text-black">
           Featured Tours Packages
         </h4>
         <h1 className="text-4xl text-black sm:text-5xl font-bold mb-6">

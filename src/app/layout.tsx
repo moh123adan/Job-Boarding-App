@@ -25,7 +25,7 @@ export default function RootLayout({
         <main>{children}</main>
         <VerticalBars />
         {/* <Footer /> */}
-        <footer className="container py-8 mt-60 text-gray-500">
+        <footer className="container py-8 text-gray-500">
           Job Board &copy; 2024 - All rights reserved
         </footer>
       </body>
