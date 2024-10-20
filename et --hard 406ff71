@@ -1,0 +1,71 @@
+[33m406ff71[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: commit: continueing: the organization
+[33m3602e0a[m HEAD@{1}: reset: moving to 3602e0a
+[33m3602e0a[m HEAD@{2}: commit: created: route for the new-company
+[33m9e71457[m HEAD@{3}: commit: added: link to navigate to new company
+[33m3d8e52c[m HEAD@{4}: commit: created the new company component or page
+[33mb71ba37[m HEAD@{5}: commit: Created: separate page for the creating new company
+[33m865e895[m HEAD@{6}: commit: fetched: the data of the organization
+[33m71d6106[m HEAD@{7}: commit: fixed: created action workos to differentiate the server from client
+[33mce540a2[m HEAD@{8}: commit: fixed: error creating company
+[33mf2fc995[m HEAD@{9}: commit: creating: organization
+[33m3b365e8[m HEAD@{10}: commit: fixed: Display organization memberships
+[33mf9667fd[m HEAD@{11}: commit: fixed: type userid
+[33m2a3b631[m HEAD@{12}: commit: fixed: some bugs
+[33mf98e027[m HEAD@{13}: commit: added: button and input for the jop post
+[33m8ea9e63[m HEAD@{14}: commit: added: some code to the NewListingPage
+[33ma564985[m HEAD@{15}: commit: fixed: with the upload cv
+[33mf2f0b91[m HEAD@{16}: commit: fixed: the position the job post app
+[33m586b1e9[m HEAD@{17}: commit: added: new listing for the job post
+[33m9f057b8[m HEAD@{18}: pull: Fast-forward
+[33m73ba73a[m HEAD@{19}: commit: modified: header and NavLinks
+[33mb6609b9[m HEAD@{20}: commit: added: the user profile
+[33m3c3aba6[m HEAD@{21}: commit: fixed: the auth the login and logout
+[33m5f35a3b[m HEAD@{22}: commit: Deleted: some fiels
+[33mb822438[m HEAD@{23}: commit: fixed: the auth
+[33me2152c3[m HEAD@{24}: commit: changed some files
+[33m4211698[m HEAD@{25}: commit: added: authAction coz in the header is client
+[33m80cc0ed[m HEAD@{26}: pull: Merge made by the 'ort' strategy.
+[33mf49ea0e[m HEAD@{27}: commit: fixing: some bugs with the auth
+[33m7b9256f[m HEAD@{28}: commit: uopdated the header created headerLayout
+[33m6a6434f[m HEAD@{29}: commit: Updated: the categoryGrid and the footer and uploadcv
+[33m4466822[m HEAD@{30}: commit: Add HowItWorks component
+[33mc704f73[m HEAD@{31}: commit: Add UploadCv component with centered button and theme colors
+[33m81f1b99[m HEAD@{32}: commit: Add CategoriesGrid component for job categories
+[33m9d11cfe[m HEAD@{33}: commit: updated: hero
+[33m3000e2b[m HEAD@{34}: commit: fixing the auth
+[33m20fb11e[m HEAD@{35}: commit: fixing the auth
+[33meec2821[m HEAD@{36}: commit: testing auth
+[33m3007d70[m HEAD@{37}: commit: testing auth
+[33m63bd1f8[m HEAD@{38}: commit: testing auth
+[33m4bef799[m HEAD@{39}: commit: fixed some bugs
+[33mc9c27cb[m HEAD@{40}: commit: creating authantication with workOs
+[33m117207f[m HEAD@{41}: commit: fixed verticalBars
+[33mddc71eb[m HEAD@{42}: commit: fixed the nav response
+[33m9ec7ff5[m HEAD@{43}: commit: added contact
+[33m67e1a83[m HEAD@{44}: commit: added about page
+[33m9567cc5[m HEAD@{45}: commit: fixed the nav response
+[33m80c76f7[m HEAD@{46}: commit: added footer aligned well
+[33md6a69cf[m HEAD@{47}: commit: added footer aligned well
+[33m3b2aa5c[m HEAD@{48}: commit (amend): fixed error
+[33m387254b[m HEAD@{49}: commit (amend): fixed error
+[33m48c361f[m HEAD@{50}: commit (amend): fixed error
+[33m0b3f91e[m HEAD@{51}: commit (amend): fixed error
+[33m0decb7f[m HEAD@{52}: commit (amend): fixed error
+[33mca7d7d2[m HEAD@{53}: commit (amend): fixed error
+[33m20ba984[m HEAD@{54}: commit (amend): fixed error
+[33mdb146bb[m HEAD@{55}: commit: fixed error
+[33m18a1ca5[m HEAD@{56}: commit: building the jobrow section
+[33m02dd848[m HEAD@{57}: commit: building the auth and the api section
+[33m4a64d9c[m HEAD@{58}: commit: building the job section
+[33mc1b5501[m HEAD@{59}: commit: building the jobrow section
+[33m8081d60[m HEAD@{60}: commit: building the job section
+[33mf02aeae[m HEAD@{61}: commit: building the footer section
+[33ma5463f4[m HEAD@{62}: commit: building the job section
+[33m28d2ce4[m HEAD@{63}: commit: building the job section
+[33mb2b23f7[m HEAD@{64}: commit: almost done with hero
+[33m88efc49[m HEAD@{65}: commit: did somechange
+[33mcd2181e[m HEAD@{66}: commit: done with the haader
+[33mb4cc9a3[m HEAD@{67}: commit: done with the haader
+[33m44201f6[m HEAD@{68}: commit: building the header
+[33m4919afd[m HEAD@{69}: Branch: renamed refs/heads/master to refs/heads/main
+[33m4919afd[m HEAD@{71}: commit (initial): first commit

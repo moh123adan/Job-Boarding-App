@@ -26,22 +26,36 @@ export default async function NewListingPage() {
       userId: user.id,
     });
 
+  const activeOrganizationMemberships = organizationMemberships.data.filter(
+    (om) => om.status === "active"
+  );
+  const oragnizationNames: { [key: string]: string } = {};
+
+  for (const activeMemberships of activeOrganizationMemberships) {
+    const organization = await workos.organizations.getOrganization(
+      activeMemberships.organizationId
+    );
+    oragnizationNames[organization.id] = organization.name;
+  }
+
   return (
     <div className="container mt-42">
       <div>
-        <pre>
-          {/* Display organization memberships */}
-          {organizationMemberships &&
-            JSON.stringify(organizationMemberships, null, 2)}
-        </pre>
-
         <h2 className="text-lg mt-6">Your companies</h2>
         <p className="text-gray-500 text-sm mb-2">
           Select a company to create a job ad for{" "}
         </p>
-        <div className="border border-red-200 bg-red-50 p-4 rounded-md">
-          No companies found assigned to your user
-        </div>
+        {organizationMemberships.data
+          .filter((om) => om.status === "active")
+          .map((om) => (
+            <div>{om.organizationId}</div>
+          ))}
+
+        {organizationMemberships.data.length === 0 && (
+          <div className="border border-red-200 bg-red-50 p-4 rounded-md">
+            No companies found assigned to your user
+          </div>
+        )}
 
         <Link
           className="inline-flex gap-2 items-center bg-gray-200 px-4 py-2 rounded-md mt-6"
