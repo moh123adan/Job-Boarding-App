@@ -5,11 +5,11 @@ import { AutoPaginatable, OrganizationMembership } from "@workos-inc/node"; // E
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import createCompany from "../actions/workosActions";
+import Link from "next/link";
 
 export default async function NewListingPage() {
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
   const { user } = await getUser();
-
 
   // If the user is not logged in, return a message
   if (!user) {
@@ -43,8 +43,13 @@ export default async function NewListingPage() {
           No companies found assigned to your user
         </div>
 
-        <Link href=""></Link>
-      
+        <Link
+          className="inline-flex gap-2 items-center bg-gray-200 px-4 py-2 rounded-md mt-6"
+          href="/new-company"
+        >
+          Create new company
+          <FontAwesomeIcon className="h-4" icon={faArrowRight} />
+        </Link>
       </div>
     </div>
   );
