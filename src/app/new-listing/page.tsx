@@ -51,7 +51,12 @@ export default async function NewListingPage() {
             {Object.keys(oragnizationNames).map((orgId) => (
               <Link
                 href={"/new-listing/+orgId"}
-                className="py-2 px-4 flex gap-2 items-center"
+                className={
+                  "py-2 px-4 flex gap-2 items-center " +
+                  (Object.keys(oragnizationNames)[0] === orgId
+                    ? ""
+                    : "border-t")
+                }
               >
                 {oragnizationNames[orgId]}
                 <FontAwesomeIcon className="h-4" icon={faArrowRight} />
