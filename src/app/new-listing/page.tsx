@@ -46,16 +46,18 @@ export default async function NewListingPage() {
         <p className="text-gray-500 text-sm mb-2">
           Select a company to create a job ad for{" "}
         </p>
-        <div className="border inline-block rounded-md">
-          {Object.keys(oragnizationNames).map((orgId) => (
-            <Link
-              href={"/new-listing/+orgId"}
-              className="py-2 px-4 flex gap-2 items-center"
-            >
-              {oragnizationNames[orgId]}
-              <FontAwesomeIcon className="h-4" icon={faArrowRight} />
-            </Link>
-          ))}
+        <div>
+          <div className="border inline-block rounded-md">
+            {Object.keys(oragnizationNames).map((orgId) => (
+              <Link
+                href={"/new-listing/+orgId"}
+                className="py-2 px-4 flex gap-2 items-center"
+              >
+                {oragnizationNames[orgId]}
+                <FontAwesomeIcon className="h-4" icon={faArrowRight} />
+              </Link>
+            ))}
+          </div>
         </div>
 
         {organizationMemberships.data.length === 0 && (
