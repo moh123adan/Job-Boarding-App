@@ -40,16 +40,23 @@ export default async function NewListingPage() {
 
   return (
     <div className="container mt-42">
-      <div>
+      {JSON.stringify(oragnizationNames)}
+      <>
         <h2 className="text-lg mt-6">Your companies</h2>
         <p className="text-gray-500 text-sm mb-2">
           Select a company to create a job ad for{" "}
         </p>
-        {organizationMemberships.data
-          .filter((om) => om.status === "active")
-          .map((om) => (
-            <div>{om.organizationId}</div>
+        <div className="border inline-block rounded-md">
+          {Object.keys(oragnizationNames).map((orgId) => (
+            <Link
+              href={"/new-listing/+orgId"}
+              className="py-2 px-4 flex gap-2 items-center"
+            >
+              {oragnizationNames[orgId]}
+              <FontAwesomeIcon className="h-4" icon={faArrowRight} />
+            </Link>
           ))}
+        </div>
 
         {organizationMemberships.data.length === 0 && (
           <div className="border border-red-200 bg-red-50 p-4 rounded-md">
@@ -64,7 +71,7 @@ export default async function NewListingPage() {
           Create new company
           <FontAwesomeIcon className="h-4" icon={faArrowRight} />
         </Link>
-      </div>
+      </>
     </div>
   );
 }
