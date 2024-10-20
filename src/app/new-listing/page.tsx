@@ -1,7 +1,7 @@
+"use server";
 import { getUser } from "@workos-inc/authkit-nextjs";
 import { WorkOS } from "@workos-inc/node";
-// import Link from "next/link";
-// import toast from "react-hot-toast";
+import { AutoPaginatable, OrganizationMembership } from "@workos-inc/node"; // Import necessary types
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -10,37 +10,26 @@ export default async function NewListingPage() {
 
   const { user } = await getUser();
 
-  if (user) {
-    const organizationMemberShip =
+  if (!user) {
+    <div className="container">
+      <div>You need to be logged in to post</div>
+    </div>;
+  }
+
+  // Corrected variable initialization
+ 
+    const organizationMemberships =
       await workos.userManagement.listOrganizationMemberships({
         userId: user.id,
       });
   }
 
-  // if (!user) {
-  //   return <div>toast.success("you need to be logged in to post job")</div>;
-  // }
-
-  // const organizationMemberShip =
-  //   await workos.userManagement.listOrganizationMemeberships({
-  //     userId: user.id,
-  //   });
-
-  // const activeOrganizationMemberShips = organizationMemberShips.data.filter(om => om.status === "active");
-
-  // const organizationNames: { [key: string]: string } = {};
-
-  // for (let activeMembership of activeOrganizationMemberShips) {
-  //   const organization = await organization.getOrganization(activeMembership.organizationId);
-  //   organizationNames[organizationId] = organization.name;
-  // }
-
   return (
     <div className="container mt-42">
-      <div>
-        {!user && <div>You need to be logged in to post</div>}
-        {user && (
+  
+    
           <div>
+            {JSON.stringify(organizationMemberships)}
             <h2 className="text-lg mt-6">Your companies</h2>
             <p className="text-gray-500 text-sm mb-2">
               Select a company to create a job add for{" "}
@@ -64,8 +53,6 @@ export default async function NewListingPage() {
               </button>
             </form>
           </div>
-        )}
       </div>
-    </div>
   );
 }
