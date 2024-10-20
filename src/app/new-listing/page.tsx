@@ -40,7 +40,7 @@ export default async function NewListingPage() {
 
   return (
     <div className="container mt-42">
-      {JSON.stringify(oragnizationNames)}
+      {/* {JSON.stringify(oragnizationNames)} */}
       <>
         <h2 className="text-lg mt-6">Your companies</h2>
         <p className="text-gray-500 text-sm mb-2">
