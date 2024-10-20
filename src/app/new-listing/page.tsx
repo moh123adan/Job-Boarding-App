@@ -8,16 +8,14 @@ import createCompany from "../actions/workosActions";
 
 export default async function NewListingPage() {
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
-
-  // async function createCompany(data: FormData) {
-  //   "use server";
-  //   await workos.organizations.createOrganization({
-  //     name: data.get("newCompanyName") as string,
-  //   });
-  // }
-
   const { user } = await getUser();
 
+  async function handleNewCompanyFormSubmit(data: FormData) {
+    "use server";
+    if (user) {
+      await createCompany(data.get("newCompanyName") as string, user.id);
+    }
+  }
   // If the user is not logged in, return a message
   if (!user) {
     return (
@@ -54,7 +52,7 @@ export default async function NewListingPage() {
         <p className="text-gray-500 text-sm mb-2">
           To create a job listing, you first need to register a company.
         </p>
-        <form action={createCompany} className="flex gap-2">
+        <form action={handleNewCompanyFormSubmit} className="flex gap-2">
           <input
             name="newCompanyName"
             className="p-2 border border-gray-400 rounded-md"

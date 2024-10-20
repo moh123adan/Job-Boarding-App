@@ -2,12 +2,12 @@ import { WorkOS } from "@workos-inc/node";
 
 const workos = new WorkOS(process.env.WORKOS_API_KEY);
 
-export default async function createCompany(data: FormData, userId: string) {
+export default async function createCompany(companyName: string, userId: string) {
     "use server";
     const org = await workos.organizations.createOrganization({
-        name: data.get("newCompanyName") as string,
+        name: companyName
     });
-    await workos.userManagement.createOrganizationMembership({
+    return await workos.userManagement.createOrganizationMembership({
         userId,
         organizationId: org.id,
         roleSlug: 'admin'
