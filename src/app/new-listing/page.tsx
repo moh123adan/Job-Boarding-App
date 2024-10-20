@@ -46,13 +46,18 @@ export default async function NewListingPage() {
         <p className="text-gray-500 text-sm mb-2">
           To create a job listing, you first need to register a company.
         </p>
-        <form action="" className="flex gap-2">
+        <form action={() => {
+          "use server";
+          workos.organizations.createOrganization
+
+        }} 
+        className="flex gap-2">
           <input
-            className="p-2 border border-gray-400 rounded-md mb-4"
+            className="p-2 border border-gray-400 rounded-md"
             type="text"
             placeholder="Company name"
           />
-          <button className="flex gap-2 items-center bg-gray-200 px-4 py-2 rounded-md">
+          <button type="submit" className="flex gap-2 items-center bg-gray-200 px-4 py-2 rounded-md">
             Create company
           </button>
         </form>
