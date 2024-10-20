@@ -28,8 +28,12 @@ export default async function NewListingPage() {
   return (
     <div className="container mt-42">
       <div>
-        {/* Display organization memberships */}
-        {organizationMemberships && JSON.stringify(organizationMemberships)}
+        <pre>
+              {/* Display organization memberships */}
+        {organizationMemberships && JSON.stringify(organizationMemberships, null, 2)}
+
+        </pre>
+    
         <h2 className="text-lg mt-6">Your companies</h2>
         <p className="text-gray-500 text-sm mb-2">
           Select a company to create a job ad for{" "}
