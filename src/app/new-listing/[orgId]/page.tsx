@@ -1,3 +1,8 @@
 export default function NewListingForOrgPage() {
-  return <form action="">new job form here</form>;
+  return <form action="" className="container mt-6">
+    
+
+    
+    
+    new job form here</form>;
 }
