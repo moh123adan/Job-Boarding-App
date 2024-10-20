@@ -4,16 +4,17 @@ import { WorkOS } from "@workos-inc/node";
 import { AutoPaginatable, OrganizationMembership } from "@workos-inc/node"; // Ensure necessary types are imported
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import createCompany from "../actions/workosActions";
 
 export default async function NewListingPage() {
-  async function createCompany(data: FormData) {
-    "use server";
-    await workos.organizations.createOrganization({
-      name: data.get("newCompanyName") as string,
-    });
-  }
-
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
+
+  // async function createCompany(data: FormData) {
+  //   "use server";
+  //   await workos.organizations.createOrganization({
+  //     name: data.get("newCompanyName") as string,
+  //   });
+  // }
 
   const { user } = await getUser();
 
