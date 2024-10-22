@@ -1,5 +1,7 @@
 import { getUser } from "@workos-inc/authkit-nextjs";
 import { WorkOS } from "@workos-inc/node";
+import { TextArea, TextField, Theme } from "@radix-ui/themes";
+
 type PageProps = {
   params: {
     orgId: string;
@@ -24,8 +26,11 @@ export default async function NewListingForOrgPage(props: PageProps) {
   }
 
   return (
-    <form action="" className="container mt-6">
-    <input className="border p-2" placeholder="job title" type="job title" />
-    </form>
+    <Theme>
+      <form action="" className="container mt-6">
+        <TextField.Root placeholder="job title" />
+        <TextArea placeholder="Job description" />
+      </form>
+    </Theme>
   );
 }

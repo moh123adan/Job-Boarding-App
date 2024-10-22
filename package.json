@@ -14,6 +14,7 @@
     "@fortawesome/free-regular-svg-icons": "6.5.2",
     "@fortawesome/free-solid-svg-icons": "6.5.2",
     "@fortawesome/react-fontawesome": "0.2.1",
+    "@radix-ui/themes": "^3.1.4",
     "@workos-inc/authkit-nextjs": "^0.9.0",
     "@workos-inc/node": "^7.25.1",
     "class-variance-authority": "^0.7.0",
