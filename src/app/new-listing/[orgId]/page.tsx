@@ -9,24 +9,31 @@ type PageProps = {
 export default async function NewListingForOrgPage(props: PageProps) {
   const { user } = await getUser();
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
+
   if (!user) {
     return "Please log in";
   }
+
   const orgId = props.params.orgId;
-  const oms = await workos.userManagement.listOrganizationMemberships({
-    userId: user.id,
-    organizationId: orgId,
-  });
-  const hasAccess = oms.data.length > 0;
 
-  
+  console.log("User ID:", user.id); // Check if the user ID is valid
+  console.log("Org ID:", orgId); // Check if the organization ID is correct
 
-  return JSON.stringify({ hasAccess: hasAccess });
+  try {
+    const oms = await workos.userManagement.listOrganizationMemberships({
+      userId: user.id,
+      organizationId: orgId,
+    });
 
-  return (
-    <form action="" className="container mt-6">
-      {JSON.stringify(props)}
-      new job form here
-    </form>
-  );
+    console.log("Organization Memberships:", oms.data); // Check what data is being returned
+
+    const hasAccess = oms.data.length > 0;
+
+    console.log("Has Access:", hasAccess); // Log if access is granted or not
+
+    return JSON.stringify({ hasAccess: hasAccess });
+  } catch (error) {
+    console.error("Error fetching organization memberships:", error);
+    return "An error occurred while checking access.";
+  }
 }
