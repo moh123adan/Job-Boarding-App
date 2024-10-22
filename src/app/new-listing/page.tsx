@@ -4,6 +4,8 @@ import { WorkOS } from "@workos-inc/node";
 import { AutoPaginatable, OrganizationMembership } from "@workos-inc/node"; // Ensure necessary types are imported
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserLock } from "@fortawesome/free-solid-svg-icons";
+
 import createCompany from "../actions/workosActions";
 import Link from "next/link";
 
@@ -14,12 +16,25 @@ export default async function NewListingPage() {
   // If the user is not logged in, return a message
   if (!user) {
     return (
-      <div className="container">
-        <div>You need to be logged in to post</div>
+      <div className="container flex justify-center items-center h-screen bg-gray-100">
+        <div className="text-center p-4 rounded-lg bg-white shadow border border-red-500">
+          <FontAwesomeIcon
+            icon={faUserLock}
+            className="text-red-500 text-3xl mb-2"
+          />
+          <h1 className="text-black text-xl font-semibold mb-2">
+            Access Denied
+          </h1>
+          <p className="text-red-500 text-base">
+            You need to be logged in to post
+          </p>
+          <p className="text-gray-500 text-sm mt-1">
+            Please login to access this feature.
+          </p>
+        </div>
       </div>
     );
   }
-
   // Initialize variable for organization memberships
   const organizationMemberships: AutoPaginatable<OrganizationMembership> | null =
     await workos.userManagement.listOrganizationMemberships({
