@@ -49,7 +49,7 @@ const HeaderLayout: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="text-gray-700 hover:text-red-600 md:hidden"
+            className="md:hidden text-gray-700 hover:text-red-600"
             aria-label="Toggle Menu"
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -58,54 +58,32 @@ const HeaderLayout: React.FC = () => {
       </div>
 
       {/* Mobile Navigation Drawer */}
-      <div
-        className={`fixed inset-0 z-50 transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        {/* Side Drawer */}
-        <div className="w-64 bg-white p-6 h-full relative">
-          {/* Close Button at Top-Left */}
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            aria-label="Close Menu"
-            className="absolute top-4 left-4 focus:outline-none"
-          >
-            <X size={28} className="text-gray-800" />
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white space-y-4 p-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-gray-700 hover:text-red-600 text-lg font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+
+          {/* Login Button */}
+          <button className="flex items-center space-x-2 px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">
+            <span>🔐</span>
+            <span>Login</span>
           </button>
 
-          <nav className="flex flex-col items-center justify-center h-full space-y-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-gray-700 hover:text-red-600 text-lg font-medium"
-                onClick={() => setIsMenuOpen(false)} // Close on link click
-              >
-                {link.name}
-              </Link>
-            ))}
-
-            {/* Login Button */}
-            <button className="flex items-center space-x-2 px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">
-              <span>🔐</span>
-              <span>Login</span>
-            </button>
-
-            {/* Post a Job Button */}
-            <button className="flex items-center space-x-2 px-4 py-2 rounded-md bg-black text-white hover:bg-gray-800">
-              <span>📝</span>
-              <span>Post a Job</span>
-            </button>
-          </nav>
+          {/* Post a Job Button */}
+          <button className="flex items-center space-x-2 px-4 py-2 rounded-md bg-black text-white hover:bg-gray-800">
+            <span>📝</span>
+            <span>Post a Job</span>
+          </button>
         </div>
-
-        {/* Overlay to close menu */}
-        <div
-          className="flex-grow bg-black bg-opacity-50"
-          onClick={() => setIsMenuOpen(false)}
-        ></div>
-      </div>
+      )}
     </header>
   );
 };
